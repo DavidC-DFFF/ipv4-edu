@@ -1,0 +1,384 @@
+:root {
+    --bg: #0b1220;
+    --fg: #e6ecf2;
+    --muted: #93a1b6;
+    --card: #0f172a;
+    --accent: #4cc9f0;
+    --sep: #334155;
+    --net: #15a34a;
+    --host: #ef4444;
+    --ghost: #0b1220;
+    --ok: #22c55e;
+    --info: #60a5fa;
+    --spec: #94a3b8;
+}
+
+html.light:root {
+    --bg: #f7fafc;
+    --fg: #0b1220;
+    --muted: #42536f;
+    --card: #ffffff;
+    --accent: #2563eb;
+    --sep: #cbd5e1;
+    --net: #15803d;
+    --host: #b91c1c;
+    --ghost: #ffffff;
+    --ok: #15803d;
+    --info: #2563eb;
+    --spec: #64748b;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial
+}
+
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--sep);
+    position: sticky;
+    top: 0;
+    background: linear-gradient(180deg, var(--bg), #0000)
+}
+
+h1 {
+    font-size: clamp(22px, 3vw, 28px);
+    margin: 0
+}
+
+.btn {
+    cursor: pointer;
+    background: var(--accent);
+    border: none;
+    color: #001628;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 700
+}
+
+.btn.ghost {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--sep)
+}
+
+.btn:disabled {
+    opacity: .45;
+    filter: saturate(.2);
+    cursor: not-allowed
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 16px
+}
+
+@media(max-width:880px) {
+    .layout {
+        grid-template-columns: 1fr
+    }
+}
+
+.sidebar {
+    background: var(--card);
+    border: 1px solid var(--sep);
+    border-radius: 14px;
+    padding: 14px
+}
+
+.sidebar h2 {
+    margin: 0 0 10px;
+    font-size: 18px
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 8px 0
+}
+
+label {
+    font-weight: 600
+}
+
+input[type=text],
+input[type=number] {
+    background: #0000;
+    border: 1px solid var(--sep);
+    border-radius: 10px;
+    color: var(--fg);
+    padding: 9px 10px;
+    min-width: 160px
+}
+
+input:focus {
+    outline: 2px solid var(--accent)
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 12px
+}
+
+.class-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin: 8px 0
+}
+
+.class-btns button {
+    background: #0ea5e9;
+    color: #00101a
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.stage {
+    background: var(--card);
+    border: 1px solid var(--sep);
+    border-radius: 16px;
+    padding: 18px;
+    display: grid;
+    gap: 16px;
+    align-content: start
+}
+
+.hero {
+    display: grid;
+    gap: 8px;
+    place-items: center;
+    text-align: center
+}
+
+.big {
+    font-size: clamp(28px, 6vw, 56px);
+    font-weight: 800;
+    letter-spacing: .5px
+}
+
+.big .oct {
+    width: 3.5ch;
+    min-width: 3.5ch;
+    max-width: 3.5ch;
+    text-align: center;
+    padding: 0;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0 2px;
+    font-variant-numeric: tabular-nums
+}
+
+.big .oct.net {
+    color: var(--net);
+    border: 1px solid color-mix(in srgb, var(--net) 65%, var(--sep));
+    background: color-mix(in srgb, var(--net) 14%, var(--ghost))
+}
+
+.big .oct.host {
+    color: var(--host);
+    border: 1px solid color-mix(in srgb, var(--host) 60%, var(--sep));
+    background: color-mix(in srgb, var(--host) 12%, var(--ghost))
+}
+
+.big .oct.mix {
+    color: var(--fg);
+    border: 1px solid var(--sep);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--net) 30%, transparent) var(--mixp), color-mix(in srgb, var(--host) 30%, transparent) var(--mixp))
+}
+
+.big .oct.sep {
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    padding: 0 6px;
+    border: 0;
+    background: transparent;
+    color: var(--fg)
+}
+
+.mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-variant-numeric: tabular-nums
+}
+
+/* —— Ligne binaire : pas de cadre autour des octets —— */
+.bin-line {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.bin-oct {
+    display: flex;
+    gap: 4px;
+    align-items: center
+}
+
+.oct-sep {
+    font-weight: bold;
+    margin: 0 4px
+}
+
+/* Bits individuels (petites pastilles vert/rouge) */
+.bit {
+    width: 18px;
+    height: 22px;
+    min-width: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 12px;
+    border: 1px solid var(--sep);
+}
+
+.bit.net {
+    background: color-mix(in srgb, var(--net) 22%, transparent);
+    color: var(--fg);
+    border-color: color-mix(in srgb, var(--net) 60%, var(--sep))
+}
+
+.bit.host {
+    background: color-mix(in srgb, var(--host) 22%, transparent);
+    color: var(--fg);
+    border-color: color-mix(in srgb, var(--host) 60%, var(--sep))
+}
+
+/* —— Halo lumineux pour les bits de classe (A/B/C) —— */
+.bit.glow {
+    box-shadow:
+        0 0 6px color-mix(in srgb, var(--accent) 50%, transparent),
+        0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent) inset;
+}
+
+/* Légendes */
+.legend {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 13px
+}
+
+.pill {
+    height: 10px;
+    width: 16px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid var(--sep)
+}
+
+.pill.net {
+    background: var(--net)
+}
+
+.pill.host {
+    background: var(--host)
+}
+
+.cidr {
+    margin-left: 10px;
+    font-weight: 800;
+    opacity: .9
+}
+
+.divider {
+    height: 1px;
+    background: var(--sep);
+    width: 100%
+}
+
+.footer {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 14px
+}
+
+/* Voyant */
+.ledbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center
+}
+
+.led {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #111;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .5) inset, 0 0 6px rgba(0, 0, 0, .25)
+}
+
+.led.private {
+    background: var(--ok);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--ok) 60%, transparent), inset 0 0 8px rgba(0, 0, 0, .5)
+}
+
+.led.public {
+    background: var(--info);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--info) 60%, transparent), inset 0 0 8px rgba(0, 0, 0, .5)
+}
+
+.led.special {
+    background: var(--spec);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--spec) 60%, transparent), inset 0 0 8px rgba(0, 0, 0, .5)
+}
+
+.status {
+    font-size: 14px;
+    opacity: .9
+}
+
+/* Boost du halo en mode clair (plus lumineux + léger renfort de contraste) */
+html.light .bit.glow {
+    box-shadow:
+        0 0 10px color-mix(in srgb, var(--accent) 70%, transparent),
+        0 0 0 3px color-mix(in srgb, var(--accent) 55%, transparent) inset;
+    border-color: color-mix(in srgb, var(--accent) 65%, var(--sep));
+}
+
+/* Optionnel : rendre chaque bit un poil plus contrasté en clair */
+html.light .bit {
+    border-color: color-mix(in srgb, var(--sep) 80%, #0000);
+}
+
+/* Boost du halo en mode sombre (un peu plus de lumière + bord plus lisible) */
+html:not(.light) .bit.glow {
+    box-shadow:
+        0 0 12px color-mix(in srgb, var(--accent) 60%, transparent),
+        0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent) inset;
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--sep));
+}
+
+/* Optionnel : micro liseré pour tous les bits en sombre */
+html:not(.light) .bit {
+    border-color: color-mix(in srgb, var(--sep) 70%, #0000);
+}
